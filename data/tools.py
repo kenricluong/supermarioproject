@@ -10,9 +10,6 @@ keybinding = {
 }
 
 class Control(object):
-    """Control class for entire project. Contains the game loop, and contains
-    the event_loop which passes events to States as needed. Logic for flipping
-    states is also found here."""
     def __init__(self, caption):
         self.screen = pg.display.get_surface()
         self.done = False
@@ -67,7 +64,6 @@ class Control(object):
 
 
     def main(self):
-        """Main loop for entire program"""
         while not self.done:
             self.event_loop()
             self.update()
