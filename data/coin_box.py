@@ -7,7 +7,6 @@ from . import coin
 
 
 class Coin_box(pg.sprite.Sprite):
-    """Coin box sprite"""
     def __init__(self, x, y, contents='coin', group=None):
         pg.sprite.Sprite.__init__(self)
         self.sprite_sheet = setup.GFX['tile_set']
@@ -30,7 +29,6 @@ class Coin_box(pg.sprite.Sprite):
 
 
     def get_image(self, x, y, width, height):
-        """Extract image from sprite sheet"""
         image = pg.Surface([width, height]).convert()
         rect = image.get_rect()
 
@@ -44,7 +42,6 @@ class Coin_box(pg.sprite.Sprite):
 
 
     def setup_frames(self):
-        """Create frame list"""
         self.frames.append(
             self.get_image(384, 0, 16, 16))
         self.frames.append(
@@ -56,14 +53,11 @@ class Coin_box(pg.sprite.Sprite):
 
 
     def update(self, game_info):
-        """Update coin box behavior"""
         self.current_time = game_info[c.CURRENT_TIME]
         self.handle_states()
 
 
     def handle_states(self):
-        """Determine action based on RESTING, BUMPED or OPENED
-        state"""
         if self.state == c.RESTING:
             self.resting()
         elif self.state == c.BUMPED:
