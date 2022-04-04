@@ -4,7 +4,6 @@ from .. import constants as c
 
 
 class Digit(pg.sprite.Sprite):
-    """Individual digit for score"""
     def __init__(self, image):
         super(Digit, self).__init__()
         self.image = image
@@ -12,7 +11,6 @@ class Digit(pg.sprite.Sprite):
 
 
 class Score(object):
-    """Scores that appear, float up, and disappear"""
     def __init__(self, x, y, score, flag_pole=False):
         self.x = x
         self.y = y
@@ -28,7 +26,6 @@ class Score(object):
 
 
     def create_image_dict(self):
-        """Creates the dictionary for all the number images needed"""
         self.image_dict = {}
 
         image0 = self.get_image(1, 168, 3, 8)
@@ -53,7 +50,6 @@ class Score(object):
 
 
     def get_image(self, x, y, width, height):
-        """Extracts image from sprite sheet"""
         image = pg.Surface([width, height]).convert()
         rect = image.get_rect()
 
@@ -66,7 +62,6 @@ class Score(object):
 
 
     def create_digit_list(self):
-        """Creates the group of images based on score received"""
         self.digit_list = []
         self.digit_group = pg.sprite.Group()
 
@@ -77,7 +72,6 @@ class Score(object):
 
 
     def set_rects_for_images(self):
-        """Set the rect attributes for each image in self.image_list"""
         for i, digit in enumerate(self.digit_list):
             digit.rect = digit.image.get_rect()
             digit.rect.x = self.x + (i * 10)
@@ -85,7 +79,6 @@ class Score(object):
 
 
     def update(self, score_list, level_info):
-        """Updates score movement"""
         for number in self.digit_list:
             number.rect.y += self.y_vel
 
@@ -98,13 +91,11 @@ class Score(object):
 
 
     def draw(self, screen):
-        """Draws score numbers onto screen"""
         for digit in self.digit_list:
             screen.blit(digit.image, digit.rect)
 
 
     def check_to_delete_floating_scores(self, score_list, level_info):
-        """Check if scores need to be deleted"""
         for i, score in enumerate(score_list):
             if int(score.score_string) == 1000:
                 if (score.y - score.digit_list[0].rect.y) > 130:
