@@ -67,7 +67,6 @@ class Coin_box(pg.sprite.Sprite):
 
 
     def resting(self):
-        """Action when in the RESTING state"""
         if self.first_half:
             if self.frame_index == 0:
                 if (self.current_time - self.animation_timer) > 375:
@@ -93,7 +92,6 @@ class Coin_box(pg.sprite.Sprite):
 
 
     def bumped(self):
-        """Action after Mario has bumped the box from below"""
         self.rect.y += self.y_vel
         self.y_vel += self.gravity
 
@@ -113,7 +111,6 @@ class Coin_box(pg.sprite.Sprite):
 
 
     def start_bump(self, score_group):
-        """Transitions box into BUMPED state"""
         self.y_vel = -6
         self.state = c.BUMPED
 
@@ -127,5 +124,4 @@ class Coin_box(pg.sprite.Sprite):
 
 
     def opened(self):
-        """Placeholder for OPENED state"""
         pass
